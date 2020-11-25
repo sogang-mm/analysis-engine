@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="d100bd16-0571-46ff-99a5-a3c15b2683eb" name="analysis-module-v2" url="http:///">
+        <fileTransfer accessType="SFTP" host="mlheroes.sogang.ac.kr" port="20222" sshConfigId="fec2ca9a-8c2d-4f54-8bb1-4597be18c649" sshConfig="root@mlheroes.sogang.ac.kr:20222 password" />
+      </webServer>
+      <webServer id="7c75e96e-bb5e-4ab0-868a-8df521bde9a9" name="host-anlaysis-module-v2">
+        <fileTransfer accessType="SFTP" host="mlheroes.sogang.ac.kr" port="22" sshConfigId="4a785950-bcbc-4ace-bc19-5aad5697197e" sshConfig="mmlab@mlheroes.sogang.ac.kr:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

@@ -13,6 +13,7 @@ services:
       - rabbitmq
     env_file:
       - "docker-compose-env/main.env"
+      - "docker-compose-env/mysql.env"
       - "docker-compose-env/rabbitmq.env"
     expose:
       - "8000"
