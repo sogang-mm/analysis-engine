@@ -48,7 +48,6 @@ class VideoModel(models.Model):
 
     def save(self, *args, **kwargs):
         super(VideoModel, self).save(*args, **kwargs)
-
         if self.analysis_type == 'audio':
             audio = self.audio.create()
             data = audio.audio.path
@@ -64,11 +63,15 @@ class VideoModel(models.Model):
                 self.frame.create(frame=frame_url)
 
             self.video_info = get_video_metadata(video_path)
+            video_info = {
+                "video_info": self.video_info,
+                "frame_urls": urls
+            }
 
         if DEBUG:
-            task_get = ast.literal_eval(str(analyzer_by_video(data, self.video_info, self.analysis_type)))
+            task_get = ast.literal_eval(str(analyzer_by_video(data, video_info, self.analysis_type)))
         else:
-            task_get = ast.literal_eval(str(analyzer_by_video.delay(data, self.video_info, self.analysis_type).get()))
+            task_get = ast.literal_eval(str(analyzer_by_video.delay(data, video_info, self.analysis_type).get()))
 
         self.result = task_get
         super(VideoModel, self).save()
