@@ -31,8 +31,18 @@ def module_load_init(**__):
 
 
 @app.task
-def analyzer_by_path(image_path):
-    result = analyzer.inference_by_path(image_path)
+def analyzer_by_image(file_path):
+    result = analyzer.inference_by_image(file_path)
+    return result
+
+@app.task
+def analyzer_by_video(data, video_info, analysis_type):
+    if analysis_type == 'video' :
+        result = analyzer.inference_by_video(data, video_info)
+    elif analysis_type == 'audio' :
+        result = analyzer.inference_by_audio(data, video_info)
+    elif analysis_type == 'text' :
+        result = analyzer.inference_by_text(data, video_info)
     return result
 
 
