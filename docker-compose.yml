@@ -19,8 +19,8 @@ services:
       - "8000"
       - "22"
     ports:
-      - "20000:8000"
-      - "20222:22"
+      - "8001:8000"
+      - "8022:22"
     stdin_open: true
     tty: true
   rabbitmq:
