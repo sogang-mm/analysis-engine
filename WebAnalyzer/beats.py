@@ -14,9 +14,13 @@ def delete_old_database(days=0):
     date_point = date_today - date_delta
 
     # Delete DB
-    old_database = models.ImageModel.objects.filter(uploaded_date__lte=date_point)
-    old_database_count = old_database.count()
-    old_database.delete()
+    old_imagemodel_database = models.ImageModel.objects.filter(uploaded_date__lte=date_point)
+    old_imagemodel_database_count = old_imagemodel_database.count()
+    old_imagemodel_database.delete()
+
+    old_videomodel_database = models.VideoModel.objects.filter(uploaded_date__lte=date_point)
+    old_videomodel_database_count = old_imagemodel_database.count()
+    old_videomodel_database.delete()
 
     # Delete Image Folder
     date_point_dir = str(filter(str.isdigit, date_point.isoformat()))
@@ -29,4 +33,4 @@ def delete_old_database(days=0):
     print(" - Date Point: {0}".format(date_point))
     print("====================")
 
-    return old_database_count
+    return old_imagemodel_database_count + old_videomodel_database_count
