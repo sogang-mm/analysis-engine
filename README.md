@@ -23,7 +23,12 @@ Python 코드로 구성되어 있으며, Django 및 Django REST framework를 사
 Linux 사용을 가정하여 코드를 작성하였으며, 만약 다른 환경에서의 설치를 진행하려면 문의하시기 바랍니다.
 
 프로젝트의 개발은 docker container에서 진행하시기를 권장하며, host PC에서 바로 개발을 진행할 경우 mysql 설치 및 아래 DB, 계정정보를 설정해야 하니 필요하신 경우 맨아래 메일로 문의히시기 바랍니다.
-
+```
+# DB info
+Database name : module_db
+User : admin
+password : password
+```
 
 ## Prerequisites
 
