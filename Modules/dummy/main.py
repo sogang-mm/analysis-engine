@@ -1,4 +1,6 @@
 import os
+
+from AnalysisModule import settings
 from Modules.dummy.example import test
 from WebAnalyzer.utils.media import frames_to_timecode
 
@@ -50,12 +52,14 @@ class Dummy:
 
         return self.result
 
-    def inference_by_video(self, frame_path_list, video_info):
+    def inference_by_video(self, frame_path_list, infos):
         results = []
-
+        video_info = infos['video_info']
+        frame_urls = infos['frame_urls']
         fps = video_info['fps']
-        for idx, frame_path in enumerate(frame_path_list):
+        for idx, (frame_path, frame_url) in enumerate(zip(frame_path_list, frame_urls)):
             result = self.inference_by_image(frame_path)
+            result["frame_url"] = settings.MEDIA_URL + frame_url[1:]
             result["frame_number"] = idx + 1
             result["timestamp"] = frames_to_timecode((idx + 1) * fps, fps)
             results.append(result)
@@ -64,7 +68,8 @@ class Dummy:
 
         return self.result
 
-    def inference_by_audio(self, audio_path, video_info):
+    def inference_by_audio(self, audio_path, infos):
+        video_info = infos['video_info']
         result = []
         # TODO
         #   - Inference using image path
