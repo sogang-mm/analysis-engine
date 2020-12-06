@@ -81,7 +81,7 @@ class Dummy:
             {
                 # 1 timestamp & 1 class
                 'label': [
-                    {'score': 1.0, 'description': 'car'}
+                    {'score': 1.0, 'description': 'class_name'}
                 ],
                 'timestamp': "00:00:01:00"
             }
