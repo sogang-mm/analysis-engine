@@ -33,7 +33,7 @@ password : password
 ## Prerequisites
 
 - Linux Based OS
-- Python 2.7, 3.4, 3.5, or 3.6
+- Python 3
 - And so on
 
 
