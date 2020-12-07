@@ -60,7 +60,7 @@ class Dummy:
         for idx, (frame_path, frame_url) in enumerate(zip(frame_path_list, frame_urls)):
             result = self.inference_by_image(frame_path)
             result["frame_url"] = settings.MEDIA_URL + frame_url[1:]
-            result["frame_number"] = idx + 1
+            result["frame_number"] = int((idx + 1) * fps)
             result["timestamp"] = frames_to_timecode((idx + 1) * fps, fps)
             results.append(result)
 
