@@ -248,14 +248,14 @@ sh run_migration.sh
 * 해당 모듈은 다른 모듈들로부터 받은 결과를 이용하여 multi modal-based classification을 진행하기 때문에 다른 모듈로부터 결과를 받아 결과를 출력하도록 진행해야 합니다. 기본적으로 object detection 결과가 필요한 모듈이므로 아래 REST API를 통해 입력 동영상에 대한 metadata 및 mscoco 기반 object detection 결과를 얻을 수 있습니다.
 * Object detection(mscoco based) REST API의 사용방법은 다음과 같습니다.
   * [http://mlaries.sogang.ac.kr:8001/video/](http://mlaries.sogang.ac.kr:8001/video/)에 접속하면 아래와 같은 화면을 볼 수 있습니다.
-  ![1.PNG](./image/1.PNG)
+  ![image1](https://github.com/JinhaSong/analysis-module-v2/blob/hidf-post/images/1.PNG)
   * 위 화면에서 동영상의 입력은 Video, Video url 필드로 가능하며, 둘 중 하나만 입력하셔야 합니다.
   * Video text는 향후에 자연어처리 연구실에서 분석할 내용을 입력할 필드이니 현재는 비워두시고 사용하시기 바랍니다.
   * Extract fps는 동영상에서 프레임 추출 시 초당 몇장씩 추출할 것인지를 의미하며 1을 입력하면 1초당 1개의 프레임만 추출하여 object detection inference를 진행합니다.
   * Alaysis type은 null을 입력하는 것이 불가능한 필드이며, 반드시 video로 작성하시기 바랍니다.
   * 위 사항들이 모두 완료되면 POST버튼을 눌러 결과 값을 받아보실 수 있습니다.
   * 결과 값은 아래와 같으며 분석결과는 updated_date 필드 아래의 result 부터 활용하시면됩니다.
-  ![2.png](./image/2.png)
+  ![image2](https://github.com/JinhaSong/analysis-module-v2/blob/hidf-post/images/2.png)
   * 동영상 분석시간이 오래 걸릴 수 있으니 미리 분석을 실행하고 결과를 따로 저장하여 입력을 주시는 것을 권장합니다.
   
 
