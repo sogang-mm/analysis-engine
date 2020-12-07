@@ -97,7 +97,7 @@ def get_video_metadata(video_path):
             value = info[1]
             json_metadata[key] = value
     video_capture = cv2.VideoCapture(video_path)
-    json_metadata['fps'] = video_capture.get(cv2.CAP_PROP_FPS)
+    json_metadata['extract_fps'] = video_capture.get(cv2.CAP_PROP_FPS)
     video_capture.release()
 
     return json_metadata

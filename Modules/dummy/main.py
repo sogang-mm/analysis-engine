@@ -56,7 +56,7 @@ class Dummy:
         results = []
         video_info = infos['video_info']
         frame_urls = infos['frame_urls']
-        fps = video_info['fps']
+        fps = video_info['extract_fps']
         for idx, (frame_path, frame_url) in enumerate(zip(frame_path_list, frame_urls)):
             result = self.inference_by_image(frame_path)
             result["frame_url"] = settings.MEDIA_URL + frame_url[1:]
