@@ -30,8 +30,8 @@ def module_load_init(**__):
 
 
 @app.task
-def analyzer_by_path(image_path):
-    result = analyzer.inference_by_path(image_path)
+def analyzer_by_data(detection_result):
+    result = analyzer.inference_by_data(detection_result)
     return result
 
 
