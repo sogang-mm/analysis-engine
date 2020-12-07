@@ -16,7 +16,7 @@ def delete_old_database(days=0):
     date_point = date_today - date_delta
 
     # Delete DB
-    old_database = models.ImageModel.objects.filter(uploaded_date__lte=date_point)
+    old_database = models.MultiModalModel.objects.filter(uploaded_date__lte=date_point)
     old_database_count = old_database.count()
     old_database.delete()
 

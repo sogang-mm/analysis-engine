@@ -13,7 +13,7 @@ def default(instance, filename):
 
 
 def md5sum(instance, filename):
-    _contents = instance.image.read()
+    _contents = instance.video.read()
     _base = hashlib.md5(bytes(_contents)).hexdigest()
     _ext = os.path.splitext(filename)[-1]
     _filename = "{0}{1}".format(_base, _ext)
@@ -22,7 +22,7 @@ def md5sum(instance, filename):
 
 
 def sha256(instance, filename):
-    _contents = instance.image.read()
+    _contents = instance.video.read()
     _base = hashlib.sha256(bytes(_contents)).hexdigest()
     _ext = os.path.splitext(filename)[-1]
     _filename = "{0}{1}".format(_base, _ext)

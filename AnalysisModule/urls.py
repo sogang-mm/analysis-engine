@@ -29,7 +29,7 @@ import WebAnalyzer.views
 
 router = DefaultRouter()
 
-router.register(r'', WebAnalyzer.views.ImageViewSet)
+router.register(r'', WebAnalyzer.views.MultiModalViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

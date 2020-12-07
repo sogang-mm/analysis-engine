@@ -8,9 +8,9 @@ from WebAnalyzer.serializers import *
 from rest_framework import viewsets, generics
 
 
-class ImageViewSet(viewsets.ModelViewSet):
-    queryset = ImageModel.objects.all()
-    serializer_class = ImageSerializer
+class MultiModalViewSet(viewsets.ModelViewSet):
+    queryset = MultiModalModel.objects.all()
+    serializer_class = MultiModalSerializer
 
     def get_queryset(self):
         queryset = self.queryset
