@@ -290,6 +290,21 @@ sh run_migration.sh
     sh server_shutdown.sh
     ``` 
 
+## How to Test
+
+* 해당 모듈은 비디오 파일 또는 URL을 입력받아 비디오로부터 이미지 또는 오디오 파일을 추출하여 정의한 모델을 통해 추론한 결과를 출력합니다.
+* __REST API의 사용방법__
+  * __Video 및 Audio를 입력으로 사용하는 경우__
+  ![image1](https://github.com/JinhaSong/analysis-module-v2/blob/hidf/images/1.PNG)
+    * 위 화면에서 동영상의 입력은 Video, Video url 필드로 가능하며, 둘 중 하나만 입력하셔야 합니다.
+    * Extract fps는 동영상에서 프레임 추출 시 초당 몇장씩 추출할 것인지를 의미하며 1을 입력하면 1초당 1개의 프레임만 추출하여 object detection inference를 진행합니다.
+    * Alaysis type은 null을 입력하는 것이 불가능한 필드이며, 반드시 video 또는 audio로 작성하시기 바랍니다.
+    * 위 사항들이 모두 완료되면 POST버튼을 눌러 결과 값을 받아보실 수 있습니다.
+  * __Text 만을 사용하는 경우__
+  ![image1](https://github.com/JinhaSong/analysis-module-v2/blob/hidf/images/1.PNG)
+    * 입력 값이 text인 경우 video file, video url 모두 비워놓은 상태로 video text 필드에 필요한 값과 analysis type 필드에는 __text__ 로 채워서 채워서 POST버튼을 누르면 됩니다.
+    * Alaysis type은 null을 입력하는 것이 불가능한 필드이며, 반드시 text로 작성하시기 바랍니다.
+    
 ## Contact
 Email : [jinhasong@sogang.ac.kr](jinhasong@sogang.ac.kr)
 Phone : 010-4014-8730
