@@ -69,7 +69,6 @@ class Dummy:
         return self.result
 
     def inference_by_audio(self, audio_path, infos):
-        video_info = infos['video_info']
         result = []
         # TODO
         #   - Inference using image path

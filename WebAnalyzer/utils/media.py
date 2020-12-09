@@ -20,39 +20,42 @@ def get_filename(path):
     return str(path).split("/")[-1].split(".")[0]
 
 
-def get_video_dirpath(video_url):
-    date_dirpath = os.path.join(settings.MEDIA_ROOT, get_directory())
-    if not os.path.exists(date_dirpath):
-        os.mkdir(date_dirpath)
+def get_video_dir_path(video_url):
+    date_dir_path = os.path.join(settings.MEDIA_ROOT, get_directory())
+    if not os.path.exists(date_dir_path):
+        os.mkdir(date_dir_path)
 
     if "http" in video_url:
-        dirpath = os.path.join(settings.MEDIA_ROOT, get_directory(), str(video_url).split("/")[-1]).split(".")[0]
+        dir_path = os.path.join(settings.MEDIA_ROOT, get_directory(), str(video_url).split("/")[-1]).split(".")[0]
         url = os.path.join(get_directory(), str(video_url).split("/")[-1]).split(".")[0]
     else :
-        dirpath = video_url.split(".")[0]
-        url = dirpath.replace(settings.MEDIA_ROOT, "")
+        dir_path = video_url.split(".")[0]
+        url = dir_path.replace(settings.MEDIA_ROOT, "")
 
-    if not os.path.exists(dirpath) :
-        os.mkdir(dirpath)
+    if not os.path.exists(dir_path) :
+        os.mkdir(dir_path)
     else :
         timestamp = get_timestamp()
-        dirpath = dirpath + "_" + timestamp
-        url = dirpath.replace(settings.MEDIA_ROOT, "")
+        dir_path = dir_path + "_" + timestamp
+        url = dir_path.replace(settings.MEDIA_ROOT, "")
 
-        os.mkdir(dirpath)
+        os.mkdir(dir_path)
 
-    return dirpath, url
+    return dir_path, url
 
 
 def get_audio_filename(filename, ext):
+    date_dir_path = os.path.join(settings.MEDIA_ROOT, get_directory())
     path = os.path.join(settings.MEDIA_ROOT, get_directory(), filename + ext)
     url = os.path.join(get_directory(), filename + "_"  + ext)
+
+    if not os.path.exists(date_dir_path):
+        os.mkdir(date_dir_path)
 
     if not os.path.exists(path):
         timestamp = get_timestamp()
         url = os.path.join(get_directory(), filename + "_" + timestamp + ext)
         path = os.path.join(settings.MEDIA_ROOT, get_directory(), filename + "_" + timestamp + ext)
-        os.mkdir(path)
 
     return path, url
 
@@ -61,20 +64,21 @@ def extract_audio(video_url):
     dir_path = get_directory()
     path, url = get_audio_filename(video_name, ".mp3")
     audio_path = os.path.join(dir_path, path)
-
-    command = "ffmpeg -y -i {} -vn -acodec copy {}".format(video_url, audio_path)
+    
+    command = "ffmpeg -y -i {} {}".format(video_url, audio_path)
+    print(command)
     os.system(command)
 
     return url
 
 
 def extract_frames(video_url, extract_fps):
-    frame_dirpath, url = get_video_dirpath(video_url)
+    frame_dir_path, url = get_video_dir_path(video_url)
 
-    command = "ffmpeg -y -hide_banner -loglevel panic -i {} -vsync 2 -q:v 0 -vf fps={} {}/%d.jpg".format(video_url, extract_fps, frame_dirpath)
+    command = "ffmpeg -y -hide_banner -loglevel panic -i {} -vsync 2 -q:v 0 -vf fps={} {}/%d.jpg".format(video_url, extract_fps, frame_dir_path)
     os.system(command)
 
-    framecount = len(os.listdir(frame_dirpath))
+    framecount = len(os.listdir(frame_dir_path))
     frame_url_list = []
     frame_path_list = []
     for frame_num in range(1, framecount + 1):
