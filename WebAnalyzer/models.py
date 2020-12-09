@@ -48,6 +48,7 @@ class VideoModel(models.Model):
 
     def save(self, *args, **kwargs):
         super(VideoModel, self).save(*args, **kwargs)
+
         if self.analysis_type == 'audio':
             audio = self.audio.create()
             data = audio.audio.path
@@ -55,6 +56,8 @@ class VideoModel(models.Model):
 
         elif self.analysis_type == 'text':
             data = self.video_text
+            video_info = {}
+
         else :
             if self.video_url is not None:
                 video_path = self.video_url

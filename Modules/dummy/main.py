@@ -64,7 +64,7 @@ class Dummy:
             result["timestamp"] = frames_to_timecode((idx + 1) * fps, fps)
             results.append(result)
 
-        self.result = results
+        self.result = {'video_result': results}
 
         return self.result
 
