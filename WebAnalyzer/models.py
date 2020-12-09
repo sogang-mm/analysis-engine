@@ -48,19 +48,24 @@ class VideoModel(models.Model):
 
     def save(self, *args, **kwargs):
         super(VideoModel, self).save(*args, **kwargs)
+
         if self.analysis_type == 'audio':
             audio = self.audio.create()
             data = audio.audio.path
+            video_info = {}
+
         elif self.analysis_type == 'text':
             data = self.video_text
+            video_info = {}
+
         else :
             if self.video_url is not None:
                 video_path = self.video_url
             else :
                 video_path = self.video.path
             data, urls = extract_frames(video_path, self.extract_fps)
-            for frame_url in urls:
-                self.frame.create(frame=frame_url)
+            # for frame_url in urls:
+            #     self.frame.create(frame=frame_url)
 
             self.video_info = get_video_metadata(video_path)
             video_info = {

@@ -64,12 +64,11 @@ class Dummy:
             result["timestamp"] = frames_to_timecode((idx + 1) * fps, fps)
             results.append(result)
 
-        self.result = results
+        self.result = {'video_result': results}
 
         return self.result
 
     def inference_by_audio(self, audio_path, infos):
-        video_info = infos['video_info']
         result = []
         # TODO
         #   - Inference using image path
