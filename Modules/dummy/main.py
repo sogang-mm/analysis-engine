@@ -1,5 +1,6 @@
 import json
 import os
+import ast
 from Modules.dummy.example import test
 
 class Dummy:
@@ -14,9 +15,13 @@ class Dummy:
         self.model = open(model_path, "r")
 
     def inference_by_data(self, aggregation_result):
+        aggregation_result = ast.literal_eval(aggregation_result)
         result = []
         # TODO
         #   - Inference using aggregation result
+        #   - how to use aggregation_result
+        #     for data in aggregation_result :
+        #         aggregation_result[data] # Using this data
         result = {"aggregation_result": [
             {
                 # 1 timestamp & multiple class
