@@ -21,6 +21,10 @@ def get_filename(path):
 
 
 def get_video_dirpath(video_url):
+    date_dirpath = os.path.join(settings.MEDIA_ROOT, get_directory())
+    if not os.path.exists(date_dirpath):
+        os.mkdir(date_dirpath)
+
     if "http" in video_url:
         dirpath = os.path.join(settings.MEDIA_ROOT, get_directory(), str(video_url).split("/")[-1]).split(".")[0]
         url = os.path.join(get_directory(), str(video_url).split("/")[-1]).split(".")[0]
