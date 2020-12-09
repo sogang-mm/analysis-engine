@@ -13,7 +13,7 @@ import ast
 class MultiModalModel(models.Model):
     video = models.FileField(upload_to=filename.default, null=True)
     video_url = models.TextField(null=True)
-    aggregation_result = models.JSONField(null=False)
+    aggregation_result = models.TextField(null=False)
     token = models.AutoField(primary_key=True)
     uploaded_date = models.DateTimeField(auto_now_add=True)
     updated_date = models.DateTimeField(auto_now=True)
