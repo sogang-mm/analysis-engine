@@ -75,6 +75,8 @@ Docker Compose를 사용하기 위해서는 다음을 필요로 합니다.
     * 수정가능한 docker image는 아래와 같으며 원하는 docker image가 없을 경우 맨아래 문의 메일로 문의주시기 바랍니다.
     ```dockerfile
     FROM sogangmm/cuda:10.2-cudnn7-devel-ubuntu18.04-py36-mysql
+    FROM sogangmm/wildbrother:efficientdet-server0.1-py36-mysql
+    FROM sogangmm/wildbrother:e2e-mlt0.2-py36-mysql
     ```
 
 2. docker-compose.yml
